@@ -1,0 +1,36 @@
+ // Initialize Barba.js with transitions
+  barba.init({
+    transitions: [
+      {
+        name: 'fade-transition',
+        async leave(data) {
+          const done = this.async()
+
+          // Fade out the current container
+          gsap.to(data.current.container, {
+            opacity: 0,
+            duration: 0.5,
+            onComplete: done,
+          })
+        },
+        async enter(data) {
+          // Fade in the next container
+          gsap.from(data.next.container, {
+            opacity: 0,
+            duration: 0.5,
+          })
+          console.log('Enter transition called')
+          // Refresh JavaScript scripts after each transition
+          initEventListeners()
+        },
+      },
+    ],
+  })
+
+   for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[array[i], array[j]] = [array[j], array[i]] // Swap elements
+    }
+
+       // Shuffle the indices array
+    shuffleArray(indices)
